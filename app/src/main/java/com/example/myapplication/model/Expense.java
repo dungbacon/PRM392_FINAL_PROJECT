@@ -1,4 +1,4 @@
-package com.example.myapplication.data.model;
+package com.example.myapplication.model;
 
 public class Expense {
     private int expense_id;
