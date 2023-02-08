@@ -10,6 +10,10 @@ public class Category {
     public Category() {
     }
 
+    public Category(String cate_name) {
+        this.cate_name = cate_name;
+    }
+
     public Category(int cate_id, String cate_name, List<Category> child_cate) {
         this.cate_id = cate_id;
         this.cate_name = cate_name;
