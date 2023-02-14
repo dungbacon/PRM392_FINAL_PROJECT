@@ -1,21 +1,24 @@
 package com.example.myapplication.model;
 
+import java.util.Date;
+
 public class Expense {
     private int expense_id;
-    private String expense_name;
     private int cate_id;
     private String description;
-    private Float amount;
+    private int amount;
+
+    private Date createAt;
 
     public Expense() {
     }
 
-    public Expense(int expense_id, String expense_name, int cate_id, String description, Float amount) {
+    public Expense(int expense_id, int cate_id, String description, int amount, Date createAt) {
         this.expense_id = expense_id;
-        this.expense_name = expense_name;
         this.cate_id = cate_id;
         this.description = description;
         this.amount = amount;
+        this.createAt = createAt;
     }
 
     public int getExpense_id() {
@@ -24,14 +27,6 @@ public class Expense {
 
     public void setExpense_id(int expense_id) {
         this.expense_id = expense_id;
-    }
-
-    public String getExpense_name() {
-        return expense_name;
-    }
-
-    public void setExpense_name(String expense_name) {
-        this.expense_name = expense_name;
     }
 
     public int getCate_id() {
@@ -50,11 +45,19 @@ public class Expense {
         this.description = description;
     }
 
-    public Float getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(Float amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
     }
 }

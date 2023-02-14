@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".ui.home.HomeFragment">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -101,7 +99,7 @@
                                 android:layout_width="36dp"
                                 android:layout_height="36dp"
                                 android:layout_marginVertical="8dp"
-                                app:srcCompat="@drawable/Expenses" />
+                                app:srcCompat="@drawable/ic_expenses" />
 
                             <TextView
                                 android:id="@+id/expenseStat"
@@ -141,7 +139,7 @@
                                 android:layout_width="36dp"
                                 android:layout_height="36dp"
                                 android:layout_marginVertical="8dp"
-                                app:srcCompat="@drawable/Balance" />
+                                app:srcCompat="@drawable/ic_balance" />
 
                             <TextView
                                 android:id="@+id/balanceStat"
@@ -180,7 +178,7 @@
                                 android:layout_width="36dp"
                                 android:layout_height="36dp"
                                 android:layout_marginVertical="8dp"
-                                app:srcCompat="@drawable/Income" />
+                                app:srcCompat="@drawable/ic_income" />
 
 
                             <TextView
@@ -202,6 +200,11 @@
                         </LinearLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/expensesRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
