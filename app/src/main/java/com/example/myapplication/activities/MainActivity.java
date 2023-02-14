@@ -25,13 +25,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initFakeData(){
+        categoriesList.clear();
+        expensesList.clear();
+
         categoriesList.add(new Category(1, "Shopping", -1, 2));
         categoriesList.add(new Category(2, "Food & Beverage", -1, 2));
         categoriesList.add(new Category(3, "Transport", -1, 2));
         categoriesList.add(new Category(4, "Bills & Utilities", -1, 2));
         categoriesList.add(new Category(5, "Other", -1, 2));
+        categoriesList.add(new Category(6, "Salary", -1, 1));
 
-        expensesList.add(new Expense(1, 1, "Denim jacket", 499000, new Date()));
+        expensesList.add(new Expense(1, 6, "CMC Global tháng 2", 15000000, new Date()));
         expensesList.add(new Expense(2, 2, "Bún đậu", 40000, new Date()));
         expensesList.add(new Expense(3, 2, "Le Monde Steak", 650000, new Date()));
         expensesList.add(new Expense(4, 3, "Bus", 18000, new Date()));
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         expensesList.add(new Expense(8, 2, "Le Monde Steak", 650000, new Date()));
         expensesList.add(new Expense(9, 3, "Bus", 18000, new Date()));
         expensesList.add(new Expense(10, 4, "Thuê trọ tháng 2", 1892000, new Date()));
+        expensesList.add(new Expense(11, 1, "Denim jacket", 499000, new Date()));
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

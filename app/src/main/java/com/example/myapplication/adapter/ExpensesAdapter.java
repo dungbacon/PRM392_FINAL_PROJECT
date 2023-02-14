@@ -1,6 +1,8 @@
 package com.example.myapplication.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
@@ -44,6 +47,13 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.ViewHo
         holder.catTitle.setText(category.getCate_name());
         holder.description.setText(expense.getDescription());
         holder.price.setText(MainActivity.intToMoneyFormat(expense.getAmount()));
+
+        if(category.getType() == 1)
+            holder.price.setTextColor(ContextCompat.getColor(context, R.color.green_income));
+        else
+            if(category.getType() == 2) {
+                holder.price.setTextColor(ContextCompat.getColor(context, R.color.red_expense));
+            }
     }
 
     @Override
