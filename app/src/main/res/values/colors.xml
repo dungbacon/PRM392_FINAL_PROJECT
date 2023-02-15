@@ -10,4 +10,5 @@
     <color name="colorPrimary">#1976D2</color>
     <color name="red_expense">#E53935</color>
     <color name="green_income">#00897B</color>
+    <color name="light_bg">#f2f2f2</color>
 </resources>

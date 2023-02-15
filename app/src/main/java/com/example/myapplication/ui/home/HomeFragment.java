@@ -1,9 +1,8 @@
 package com.example.myapplication.ui.home;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,21 +15,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activities.AddExpenseActivity;
 import com.example.myapplication.activities.MainActivity;
-import com.example.myapplication.adapter.ExpensesAdapter;
+import com.example.myapplication.adapter.ExpensesDayAdapter;
 import com.example.myapplication.databinding.FragmentHomeBinding;
 import com.example.myapplication.model.Expense;
-
-import org.w3c.dom.Text;
-
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private ArrayList<Expense> mExpenseList ;
     private RecyclerView mRecyclerView;
-    private ExpensesAdapter mExpenseAdapter ;
+    private ExpensesDayAdapter mExpenseAdapter ;
     private FragmentHomeBinding binding;
 
     private int totalExpenses = 0;
@@ -40,22 +37,32 @@ public class HomeFragment extends Fragment {
     private TextView balanceStat;
     private TextView incomeStat;
 
+    private ExtendedFloatingActionButton addExpenseFab;
+
     Context context;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
-
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        addExpenseFab = root.findViewById(R.id.addExpenseFab);
+        addExpenseFab.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddExpenseActivity.class);
+//            intent.putExtra("userId", 0);
+                startActivity(intent);
+            }
+        });
 
-        mRecyclerView = root.findViewById(R.id.expensesRecyclerView);
-        mExpenseList = new ArrayList<>();
-        mExpenseAdapter = new ExpensesAdapter(MainActivity.expensesList, getContext());
-        mRecyclerView.setAdapter(mExpenseAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        mRecyclerView = root.findViewById(R.id.expensesRecyclerView);
+//        mExpenseList = new ArrayList<>();
+//        mExpenseAdapter = new ExpensesDayAdapter(MainActivity.expensesList, getContext());
+//        mRecyclerView.setAdapter(mExpenseAdapter);
+//        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
 
         expenseStat = root.findViewById(R.id.expenseStat);
         balanceStat = root.findViewById(R.id.balanceStat);
@@ -69,7 +76,6 @@ public class HomeFragment extends Fragment {
                 totalExpenses += item.getAmount();
         });
         currentBalance = totalIncome - totalExpenses;
-
 
         expenseStat.setText( MainActivity.intToMoneyFormat(totalExpenses));
         balanceStat.setText( MainActivity.intToMoneyFormat(currentBalance));

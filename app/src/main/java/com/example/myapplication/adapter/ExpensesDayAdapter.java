@@ -1,8 +1,6 @@
 package com.example.myapplication.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,30 +15,29 @@ import com.example.myapplication.R;
 import com.example.myapplication.activities.MainActivity;
 import com.example.myapplication.model.Category;
 import com.example.myapplication.model.Expense;
-import com.example.myapplication.ui.home.HomeFragment;
 
 import java.util.ArrayList;
 
-public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.ViewHolder> {
+public class ExpensesDayAdapter extends RecyclerView.Adapter<ExpensesDayAdapter.ViewHolder> {
 
     private final ArrayList<Expense> expenseList;
     private Context context;
 
-    public ExpensesAdapter(ArrayList<Expense> expenseList, Context context) {
+    public ExpensesDayAdapter(ArrayList<Expense> expenseList, Context context) {
         this.expenseList = expenseList;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public ExpensesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ExpensesDayAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater mInflater = LayoutInflater.from(context);
         View mExpensesItemView = mInflater.inflate(R.layout.dashboard_expense_item, parent, false);
         return new ViewHolder(mExpensesItemView, this);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ExpensesAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ExpensesDayAdapter.ViewHolder holder, int position) {
         Expense expense = expenseList.get(position);
         Category category = MainActivity.getCategoryById(expense.getCate_id());
 
@@ -62,15 +59,14 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        final ExpensesAdapter mAdapter;
-
+        final ExpensesDayAdapter mAdapter;
         private ImageView catIcon;
         private TextView catTitle;
         private TextView description;
         private TextView price;
-        public ViewHolder(@NonNull View itemView, ExpensesAdapter expensesAdapter) {
+        public ViewHolder(@NonNull View itemView, ExpensesDayAdapter expensesDayAdapter) {
             super(itemView);
-            this.mAdapter = expensesAdapter;
+            this.mAdapter = expensesDayAdapter;
             catIcon = itemView.findViewById(R.id.expenseCatIcon);
             catTitle = itemView.findViewById(R.id.expenseCatTitle);
             description = itemView.findViewById(R.id.expenseDes);

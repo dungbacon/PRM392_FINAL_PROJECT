@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     public static String intToMoneyFormat(int amount){
         return String.format("%,d", amount) + " đ";
     }
-
     private void initFakeData(){
         categoriesList.clear();
         expensesList.clear();
@@ -56,7 +55,5 @@ public class MainActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
-
-
     }
 }
